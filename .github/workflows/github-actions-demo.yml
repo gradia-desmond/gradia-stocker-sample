@@ -11,12 +11,10 @@ jobs:
           python3 -m venv venv
           sudo apt-get install -y latexmk texlive-latex-extra
           sudo apt-get install fonts-freefont-ttf
-          pip uninstall stone-grading -y
-          pip install -r requirements39.txt
-          pip install git+https://github.com/gradia-exchange/StoneGrading
           pwd
           ls
           cd frontend
+          pip install git+https://github.com/gradia-exchange/StoneGrading
           npm install
           CI=false npm run build
   django_unittests:
