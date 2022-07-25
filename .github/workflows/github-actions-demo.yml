@@ -7,6 +7,7 @@ jobs:
       - run: echo "Setting up testing environment and install dependencies!!!"
       - run: echo "This is where we are going to install our dependencies"
   django_unittests:
+    runs-on: ubuntu-latest
     needs: dependency_install
     steps:
       - run: echo "This is where we run our unittests"
