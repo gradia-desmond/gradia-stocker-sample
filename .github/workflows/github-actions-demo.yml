@@ -12,8 +12,11 @@ jobs:
     steps:
       - run: echo "This is where we run our unittests"
   linting:
+    runs-on: ubuntu-latest
     steps:
       - run: echo "This is where we run our black and js linter"
   selenium_tests:
+    runs-on: ubuntu-latest
+    needs: dependency_install
     steps:
       - run: echo "We run selenium tests here"
