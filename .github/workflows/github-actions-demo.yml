@@ -2,6 +2,7 @@ name: Test Cases
 on: [push]
 jobs:
   dependency_install:
+    runs-on: ubuntu-latest
     steps:
       - run: echo "Setting up testing environment and install dependencies!!!"
       - run: echo "This is where we are going to install our dependencies"
