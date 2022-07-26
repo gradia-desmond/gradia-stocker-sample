@@ -1,0 +1,35 @@
+name: Test Cases
+on: [push]
+jobs:
+  dependency_install:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checking out repository
+        uses: actions/checkout@v2
+      - name: Setting up python 3.9
+        uses: actions/setup-python@v2
+          with:
+            python-version: 3.9
+      - name: Creating virtualenv and installing python dependencies
+        run: |
+          python3 -m venv ~/venv
+          source ~/venv/bin/activate
+          pip install -r requirements39.txt
+      - name: Persisting virtualenv
+        run: 
+          zip ~/venv.zip ~/venv/* -r 
+        uses: actions/upload-artifact@v3
+        with:
+          name: venv
+          path: ~/venv.zip
+      - name: Setting up node 14
+        uses: actions/setup-node@v1
+          name: Set up Node.js
+          with:
+            node-version: 14
+      - name: Installing OS dependencies
+        run: |
+          sudo apt-get update 
+          sudo apt-get install -y latexmk texlive-latex-extra
+          sudo apt-get install fonts-freefont-ttf
+          pip install git+https://github.com/gradia-exchange/StoneGrading
