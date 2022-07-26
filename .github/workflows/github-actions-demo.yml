@@ -7,12 +7,14 @@ jobs:
       - uses: actions/checkout@v3
         name: Checking out repository
       - run: mkdir env
-      - run: python3 -m venv env/venv
+      - run: python3 -m venv venv
       - run: pip install -r requirements39.txt
       - uses: actions/upload-artifact@v2
         with:
           name: venv
-          path: ./env
+          path: |
+            .
+            !venv
       - uses: actions/setup-node@v1
         name: Set up Node.js
         with:
@@ -38,6 +40,7 @@ jobs:
       - uses: actions/download-artifact@v2
         with:
           name: venv
+          path: .
       - run: |
           pwd
           ls
