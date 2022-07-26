@@ -37,6 +37,8 @@ jobs:
         with:
           name: venv
       - run: |
+          pwd
+          ls
           . venv/bin/activate
           cd django_backend && pytest
   linting:
