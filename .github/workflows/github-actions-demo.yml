@@ -18,10 +18,11 @@ jobs:
           sudo apt-get install -y latexmk texlive-latex-extra
           sudo apt-get install fonts-freefont-ttf
           pip install -r requirements39.txt
-          cd frontend
+          # cd frontend
           pip install git+https://github.com/gradia-exchange/StoneGrading
-          npm install
-          CI=false npm run build
+          # npm install
+          
+          # CI=false npm run build
   django_unittests:
     runs-on: ubuntu-latest
     needs: dependency_install
@@ -35,9 +36,10 @@ jobs:
     steps:
       - run: echo "Running linting..."
       - run: |
+          . venv/bin/activate
           black --line-length 117 --exclude '^.*\b(migrations)\b.*$' --check django_backend selenium_tests
           flake8 --config flake8-config django_backend selenium_tests
-          cd frontend && npm run lint
+          # cd frontend && npm run lint
   django_checks:
     needs: dependency_install
     runs-on: ubuntu-latest
