@@ -4,7 +4,7 @@ jobs:
   dependency_install:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
         name: Checking out repository
       - uses: actions/setup-node@v1
         name: Set up Node.js
@@ -17,8 +17,7 @@ jobs:
           python3 -m venv venv
           sudo apt-get install -y latexmk texlive-latex-extra
           sudo apt-get install fonts-freefont-ttf
-          pwd
-          ls
+          pip install -r requirements39.txt
           cd frontend
           pip install git+https://github.com/gradia-exchange/StoneGrading
           npm install
