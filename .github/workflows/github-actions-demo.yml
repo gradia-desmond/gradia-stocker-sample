@@ -4,9 +4,9 @@ jobs:
   dependency_install:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v2
         name: Checking out repository
-      - uses: actions/setup-python@v3
+      - uses: actions/setup-python@v2
         with:
           python-version: 3.9
       - uses: syphar/restore-virtualenv@v1
@@ -37,8 +37,8 @@ jobs:
     needs: dependency_install
     steps:
       - run: echo "running django unittests..."
-      - uses: actions/checkout@v3
-      - uses: actions/setup-python@v3
+      - uses: actions/checkout@v2
+      - uses: actions/setup-python@v2
         with: 
           python-version: 3.9
       - uses: syphar/restore-virtualenv@v1
