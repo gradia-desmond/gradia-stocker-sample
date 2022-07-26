@@ -8,6 +8,7 @@ jobs:
         name: Checking out repository
       - run: mkdir env
       - run: python3 -m venv env/venv
+      - run: pip install -r requirements39.txt
       - uses: actions/upload-artifact@v2
         with:
           name: venv
@@ -23,7 +24,6 @@ jobs:
           sudo apt-get install -y latexmk texlive-latex-extra
           sudo apt-get install fonts-freefont-ttf
           source env/venv/bin/activate
-          pip install -r requirements39.txt
           # cd frontend
           pip install git+https://github.com/gradia-exchange/StoneGrading
           # npm install
@@ -41,7 +41,7 @@ jobs:
       - run: |
           pwd
           ls
-          . venv/bin/activate
+          source venv/bin/activate
           pip freeze
           cd django_backend && pytest
   linting:
