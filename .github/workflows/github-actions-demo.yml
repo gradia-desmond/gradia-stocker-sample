@@ -6,6 +6,11 @@ jobs:
     steps:
       - uses: actions/checkout@v3
         name: Checking out repository
+      - run: python3 -m venv venv
+      - uses: actions/upload-artifact@v2
+        with:
+          name: venv
+          path: ./venv/
       - uses: actions/setup-node@v1
         name: Set up Node.js
         with:
@@ -14,7 +19,6 @@ jobs:
       - run: echo "install python and javascript dependencies"
       - run: |
           sudo apt-get update 
-          python3 -m venv venv
           sudo apt-get install -y latexmk texlive-latex-extra
           sudo apt-get install fonts-freefont-ttf
           pip install -r requirements39.txt
@@ -28,6 +32,10 @@ jobs:
     needs: dependency_install
     steps:
       - run: echo "running django unittests..."
+      - uses: actions/checkout@v3
+      - uses: actions/download-artifact@v2
+        with:
+          name: venv
       - run: |
           . venv/bin/activate
           cd django_backend && pytest
@@ -35,6 +43,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: echo "Running linting..."
+      - uses: actions/checkout@v3
+      - uses: actions/download-artifact@v2
+        with:
+          name: venv
       - run: |
           . venv/bin/activate
           black --line-length 117 --exclude '^.*\b(migrations)\b.*$' --check django_backend selenium_tests
@@ -44,6 +56,11 @@ jobs:
     needs: dependency_install
     runs-on: ubuntu-latest
     steps:
+      - run: echo "running django unittests"
+      - uses: actions/checkout@v3
+      - uses: actions/download-artifact@v2
+        with: 
+          name: venv
       - run: |
           . venv/bin/activate
           cd django_backend
@@ -55,6 +72,10 @@ jobs:
     needs: dependency_install
     steps:
       - run: echo "Running selenium tests..."
+      - uses: actions/checkout@v3
+      - uses: actions/download-artifact@v2
+        with:
+          name: venv
       - run: |
           . venv/bin/activate
           cd selenium_tests
