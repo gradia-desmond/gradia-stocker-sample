@@ -21,12 +21,12 @@ jobs:
         with:
           name: venv
           path: ~/venv.zip
-            #- name: Setting up node 14
-            #uses: actions/setup-node@v1
-            #name: Set up Node.js
-            #with:
-            #node-version: 14
-            #- name: Installing OS dependencies
+      - name: Setting up node 14
+        uses: actions/setup-node@v1
+          name: Set up Node.js
+          with:
+            node-version: 14
+              #- name: Installing OS dependencies
             #run: |
             #sudo apt-get update 
             #sudo apt-get install -y latexmk texlive-latex-extra
