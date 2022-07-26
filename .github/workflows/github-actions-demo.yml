@@ -6,15 +6,14 @@ jobs:
     steps:
       - uses: actions/checkout@v3
         name: Checking out repository
-      - run: mkdir env
-      - run: python3 -m venv venv
+      - uses: actions/setup-python@2
+      - uses: syphar/restore-virtualenv@v1
+        id: cache-virtualenv
+        with: requirement_files: requirements39.txt
+      - uses: syphar/restore-pip-download-cache@v1
+        if: steps.cache-virtualenv.output.cache-hit != 'true'
       - run: pip install -r requirements39.txt
-      - uses: actions/upload-artifact@v2
-        with:
-          name: venv
-          path: |
-            .
-            !venv
+        if: steps.cache-virtualenv.output.cache-hit != 'true'
       - uses: actions/setup-node@v1
         name: Set up Node.js
         with:
@@ -37,10 +36,9 @@ jobs:
     steps:
       - run: echo "running django unittests..."
       - uses: actions/checkout@v3
-      - uses: actions/download-artifact@v2
-        with:
-          name: venv
-          path: .
+      - uses: actions/setup-python@2
+      - uses: syphar/restore-virtualenv@v1
+        id: cache-virtualenv
       - run: |
           pwd
           ls
