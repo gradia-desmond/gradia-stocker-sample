@@ -47,11 +47,7 @@ jobs:
           name: venv
           path: ~/
       - run: unzip ~/venv.zip
-      - run: |
-          pwd
-          ls -la home/runner
-          ls -la .
-      - run: source home/venv/bin/activate
+      - run: source home/runner/venv/bin/activate
       - run: |
           pwd
           ls -la ~
