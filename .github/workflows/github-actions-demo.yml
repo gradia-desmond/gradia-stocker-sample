@@ -39,7 +39,7 @@ jobs:
         id: cache-virtualenv
       - run: |
           pwd
-          ls
+          ls -la
           pip freeze
           cd django_backend && pytest
   linting:
