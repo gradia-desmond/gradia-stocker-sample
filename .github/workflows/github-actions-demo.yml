@@ -49,7 +49,7 @@ jobs:
       - run: unzip ~/venv.zip
       - run: |
           pwd
-          ls -la home
+          ls -la home/runner
           ls -la .
       - run: source home/venv/bin/activate
       - run: |
