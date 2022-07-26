@@ -13,6 +13,7 @@ jobs:
           python3 -m venv ~/venv
           source ~/venv/bin/activate
           pip install -r requirements39.txt
+          pip freeze 
           zip ~/venv.zip ~/venv/* -r 
       - uses: actions/upload-artifact@v3
         with:
@@ -49,7 +50,6 @@ jobs:
       - run: unzip ~/venv.zip
       - run: source home/runner/venv/bin/activate
       - run: |
-          pwd
           ls -la ~
           pip freeze
           cd django_backend && pytest
