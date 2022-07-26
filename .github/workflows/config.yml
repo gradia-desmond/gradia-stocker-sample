@@ -10,11 +10,11 @@ jobs:
         uses: actions/setup-python@v2
         with:
           python-version: 3.9
-            #- name: Creating virtualenv and installing python dependencies
-            #run: |
-            #python3 -m venv ~/venv
-            #source ~/venv/bin/activate
-            #pip install -r requirements39.txt
+      - name: Creating virtualenv and installing python dependencies
+        run: |
+          python3 -m venv ~/venv
+          source ~/venv/bin/activate
+          pip install -r requirements39.txt
             #- name: Persisting virtualenv
             #run: 
             #zip ~/venv.zip ~/venv/* -r 
