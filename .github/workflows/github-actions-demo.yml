@@ -46,11 +46,10 @@ jobs:
         with:
           name: venv
           path: ~/
-      - run: unzip ~/venv.zip -d ~/
+      - run: unzip ~/venv.zip
       - run: |
-          ls -la ~
           ls -la .
-      - run: source ~/venv/bin/activate
+      - run: source venv/bin/activate
       - run: |
           pwd
           ls -la ~
