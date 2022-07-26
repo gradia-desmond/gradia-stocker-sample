@@ -9,14 +9,14 @@ jobs:
       - uses: actions/setup-python@v2
         with:
           python-version: 3.9
-      - uses: syphar/restore-virtualenv@v1
-        id: cache-virtualenv
-        with: 
-          requirement_files: requirements39.txt
-      - uses: syphar/restore-pip-download-cache@v1
-        if: steps.cache-virtualenv.output.cache-hit != 'true'
-      - run: pip install -r requirements39.txt
-        if: steps.cache-virtualenv.output.cache-hit != 'true'
+      - run: |
+          python3 -m venv ~/venv
+          source ~/venv/bin/activate
+          pip install -r requirements39.txt
+      - uses: actions/upload-artifact@v3
+        with:
+          name: venv
+          path: ~/venv
       - uses: actions/setup-node@v1
         name: Set up Node.js
         with:
@@ -41,8 +41,10 @@ jobs:
       - uses: actions/setup-python@v2
         with: 
           python-version: 3.9
-      - uses: syphar/restore-virtualenv@v1
-        id: cache-virtualenv
+      - uses: actions/download-artifact@v3
+        with:
+          name: venv
+      - run: source ~/venv/bin/activate
       - run: |
           pwd
           ls -la ~
