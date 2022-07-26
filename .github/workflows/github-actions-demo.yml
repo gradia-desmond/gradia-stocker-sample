@@ -42,6 +42,7 @@ jobs:
           pwd
           ls
           . venv/bin/activate
+          pip freeze
           cd django_backend && pytest
   linting:
     runs-on: ubuntu-latest
