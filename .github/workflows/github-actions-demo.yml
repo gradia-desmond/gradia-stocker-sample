@@ -49,6 +49,8 @@ jobs:
           path: ~/
       - run: unzip ~/venv.zip
       - run: source home/runner/venv/bin/activate
+      - run: pip freeze
+      - run: python manage.py test --settings=gradia_lab.settings_dev
       - run: |
           ls -la ~
           pip freeze
