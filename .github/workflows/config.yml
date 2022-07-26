@@ -34,6 +34,7 @@ jobs:
     
   django_unittests:
     runs-on: ubuntu-latest
+    needs: dependency_install
     steps:
       - name: Setting up python 3.9
         uses: actions/setup-python@v2
