@@ -8,8 +8,8 @@ jobs:
         uses: actions/checkout@v2
       - name: Setting up python 3.9
         uses: actions/setup-python@v2
-          with:
-            python-version: 3.9
+        with:
+          python-version: 3.9
       - name: Creating virtualenv and installing python dependencies
         run: |
           python3 -m venv ~/venv
