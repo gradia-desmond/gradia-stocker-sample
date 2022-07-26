@@ -22,12 +22,12 @@ jobs:
           name: venv
           path: ~/venv.zip
       - uses: actions/setup-node@v1
-        name: Set up Node.js
+        name: Setting up node 14
         with:
           node-version: 14
-              #- name: Installing OS dependencies
-            #run: |
-            #sudo apt-get update 
-            #sudo apt-get install -y latexmk texlive-latex-extra
-            #sudo apt-get install fonts-freefont-ttf
-            #pip install git+https://github.com/gradia-exchange/StoneGrading
+      - name: Installing OS dependencies
+        run: |
+          sudo apt-get update 
+          sudo apt-get install -y latexmk texlive-latex-extra
+          sudo apt-get install fonts-freefont-ttf
+          pip install git+https://github.com/gradia-exchange/StoneGrading
