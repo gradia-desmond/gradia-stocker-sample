@@ -48,6 +48,8 @@ jobs:
           path: ~/
       - run: unzip ~/venv.zip
       - run: |
+          pwd
+          ls -la home
           ls -la .
       - run: source home/venv/bin/activate
       - run: |
