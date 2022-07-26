@@ -44,3 +44,5 @@ jobs:
         uses: actions/download-artifact@v3
         with: 
           name: venv
+      - name: Activating virtualenv
+        run: ls ~
