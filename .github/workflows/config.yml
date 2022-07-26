@@ -40,6 +40,6 @@ jobs:
         with:
           python-version: 3.9
       - name: Getting virtualenv
-        uses: actions/upload-artifact@v3
+        uses: actions/download-artifact@v3
         with: 
           name: venv
