@@ -48,6 +48,10 @@ jobs:
           name: venv
       - name: Activating virtualenv
         run: |
-          ls ~/runners
-          ls -la ~
+          unzip venv.zip
           ls -la .
+          source venv/bin/activate
+          pip freeze
+
+
+
