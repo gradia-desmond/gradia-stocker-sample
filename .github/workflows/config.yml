@@ -47,6 +47,7 @@ jobs:
         with: 
           name: venv
       - name: Activating virtualenv
-        run: ls ~/runners
-        run: ls -la ~
-        run: ls -la .
+        run: |
+          ls ~/runners
+          ls -la ~
+          ls -la .
