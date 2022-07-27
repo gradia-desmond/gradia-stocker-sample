@@ -42,16 +42,12 @@ jobs:
           python-version: 3.9
       - name: Checking out repository
         uses: actions/checkout@v2
-      - name: Getting virtualenv
-        uses: actions/download-artifact@v3
-        with: 
-          name: venv
-      - name: Activating virtualenv
+      - name: Running tests 
         run: |
-          unzip venv.zip -d ./
-          source home/runner/venv/bin/activate
-          cd django_backend && home/runner/venv/bin/python3 manage.py test --settings=gradia_lab.settings_dev
-          pip freeze
+          python3 -m venv venv
+          source venv/bin/activate
+          pip install -r requirements39.txt
+          cd django_backend && pytest
 
 
 
