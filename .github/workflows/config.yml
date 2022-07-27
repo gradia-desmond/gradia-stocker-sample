@@ -49,8 +49,7 @@ jobs:
       - name: Activating virtualenv
         run: |
           unzip venv.zip -d ./
-          ls -la .
-          source venv/bin/activate
+          source home/runner/venv/bin/activate
           pip freeze
 
 
