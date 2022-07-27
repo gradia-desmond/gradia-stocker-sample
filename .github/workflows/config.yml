@@ -50,6 +50,7 @@ jobs:
         run: |
           unzip venv.zip -d ./
           source home/runner/venv/bin/activate
+          cd django_backend && home/runner/venv/bin/python manage.py test --settings=gradia_lab.settings_dev
           pip freeze
 
 
