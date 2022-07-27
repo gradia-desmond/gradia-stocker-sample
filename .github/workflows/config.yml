@@ -40,9 +40,13 @@ jobs:
         uses: actions/setup-python@v2
         with:
           python-version: 3.9
+      - name: Checking out repository
+        uses: actions/checkout@v2
       - name: Getting virtualenv
         uses: actions/download-artifact@v3
         with: 
           name: venv
       - name: Activating virtualenv
         run: ls ~/runners
+        run: ls -la ~
+        run: ls -la .
